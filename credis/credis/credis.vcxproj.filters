@@ -1,6 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="main.c" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="cnet\cnet_type.cpp">
+      <Filter>cnet</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="cutil">
+      <UniqueIdentifier>{0aa990a0-c109-4b68-aea8-407124f110b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cnet">
+      <UniqueIdentifier>{48c3cd3f-1836-4194-a8ac-291b5cd9e8ee}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cutil\cnoncopyable.h">
+      <Filter>cutil</Filter>
+    </ClInclude>
+    <ClInclude Include="cutil\csingleton.h">
+      <Filter>cutil</Filter>
+    </ClInclude>
+    <ClInclude Include="cnet\cnet_type.h">
+      <Filter>cnet</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
