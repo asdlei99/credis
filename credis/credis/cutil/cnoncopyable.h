@@ -3,7 +3,7 @@
 
 	author:		chensong
 	
-	purpose:	不可拷贝对象基类 
+	purpose:	涓嶅彲鎷疯礉瀵硅薄鍩虹被 
 
 *********************************************************************/
 #ifndef _C_NONCOPYABLE_H_

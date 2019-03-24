@@ -93,7 +93,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalIncludeDirectories>./cutil;./cnet;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./cutil;./cnet;./clog;./credis;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies>Win32_Interop.lib;hiredis.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -119,7 +119,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>./cutil;./cnet;</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>./cutil;./cnet;./clog;./credis;</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -130,10 +130,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cnet\cnet_type.cpp" />
+    <ClCompile Include="credis\credis_mgr.cpp" />
+    <ClCompile Include="cutil\cdigit2str.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="clog\clog.h" />
     <ClInclude Include="cnet\cnet_type.h" />
+    <ClInclude Include="credis\credis_mgr.h" />
+    <ClInclude Include="cutil\cdigit2str.h" />
     <ClInclude Include="cutil\cnoncopyable.h" />
     <ClInclude Include="cutil\csingleton.h" />
   </ItemGroup>

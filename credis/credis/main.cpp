@@ -5,13 +5,39 @@
 #include "cnoncopyable.h"
 #include "csingleton.h"
 #include <hiredis.h>
+#ifdef _MSC_VER
 #define NO_QFORKIMPL //这一行必须加才能正常使用
 #include <win32fixes.h>
 //#pragma comment(lib,"hiredis.lib")
 //#pragma comment(lib,"Win32_Interop.lib")
+#endif
+#include <iostream>
+#include <string>
+#include "credis_mgr.h"
 
+void redis_cmd()
+{
+	chen::credis_mgr redis_sql;
+	redis_sql.init();
+	redis_sql << "chensong";
+	std::string name = "chenli";
+	redis_sql << name;
+	redis_sql << 343;
+	redis_sql << "dklf" << 45;
+//	redis_sql << 45.5;
+	//redis_sql << 3434.3434;
+	printf("buf = %s\n", redis_sql.get_buf());
+	std::cout << "redis_sql = " << redis_sql.get_buf() << std::endl;
+	std::cout << "redis_sql size = " << redis_sql.get_size() << std::endl;
+	
+}
 int main(int argc, char *argv[])
 {
+
+	redis_cmd();
+#ifdef _MSC_VER
+	system("pause");
+#endif
 	unsigned int j;
 	redisContext *c;
 	redisReply *reply;

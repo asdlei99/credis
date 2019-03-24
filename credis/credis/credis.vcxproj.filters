@@ -5,6 +5,12 @@
     <ClCompile Include="cnet\cnet_type.cpp">
       <Filter>cnet</Filter>
     </ClCompile>
+    <ClCompile Include="cutil\cdigit2str.cpp">
+      <Filter>cutil</Filter>
+    </ClCompile>
+    <ClCompile Include="credis\credis_mgr.cpp">
+      <Filter>credis</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="cutil">
@@ -12,6 +18,12 @@
     </Filter>
     <Filter Include="cnet">
       <UniqueIdentifier>{48c3cd3f-1836-4194-a8ac-291b5cd9e8ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="credis">
+      <UniqueIdentifier>{f6e19d58-dadd-4cc7-8a99-8fb95c6dc6cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="clog">
+      <UniqueIdentifier>{875dd1d2-9b95-479d-8962-90476d411a22}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -23,6 +35,15 @@
     </ClInclude>
     <ClInclude Include="cnet\cnet_type.h">
       <Filter>cnet</Filter>
+    </ClInclude>
+    <ClInclude Include="cutil\cdigit2str.h">
+      <Filter>cutil</Filter>
+    </ClInclude>
+    <ClInclude Include="credis\credis_mgr.h">
+      <Filter>credis</Filter>
+    </ClInclude>
+    <ClInclude Include="clog\clog.h">
+      <Filter>clog</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
