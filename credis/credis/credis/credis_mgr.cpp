@@ -54,6 +54,7 @@ namespace chen {
 
 	void credis_mgr::reset()
 	{
+		memset(m_buf, 0, BLOB_BUF_SIZE);
 		m_pos = 0;
 		m_error = false;
 	}

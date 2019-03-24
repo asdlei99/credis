@@ -50,19 +50,40 @@ namespace chen
 	template<>
 	int digit2str_dec<float>(char* buf, int buf_size, float value)
 	{
-		if (buf_size < 3)
+		if (value < 0)
 		{
-			return 0;
+			if (buf_size < 9)  // 7 + num , 8 - num
+			{
+				return 0;
+			}
 		}
+		else
+		{
+			if (buf_size < 8)  // 7 + num , 8 - num
+			{
+				return 0;
+			}
+		}
+		
 		return sprintf(buf, "%.2g", value);
 	}
 
 	template<>
 	int digit2str_dec<double>(char* buf, int buf_size, double value)
 	{
-		if (buf_size < 3)
+		if (value < 0)
 		{
-			return 0;
+			if (buf_size < 9)  // 7 + num , 8 - num
+			{
+				return 0;
+			}
+		}
+		else
+		{
+			if (buf_size < 8)  // 7 + num , 8 - num
+			{
+				return 0;
+			}
 		}
 		return sprintf(buf, "%.2g", value);
 	}
