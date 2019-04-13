@@ -17,11 +17,12 @@ namespace chen
 	typedef signed long long	int64;
 	typedef unsigned long long	uint64;
 
-#elif defined(__GNUC__)
+#elif defined(__GNUC__) //|| defined(__clang__)   
 
 	typedef signed long		int64;
 	typedef unsigned long	uint64;
-#else
+//#elif defined(__clang__)             
+#else // defined(__GNUC__) || defined(__clang__) 
 #pragma error "unknow platform!!!"
 
 #endif
