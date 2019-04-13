@@ -34,20 +34,22 @@ void redis_cmd()
 int main(int argc, char *argv[])
 {
 
-	redis_cmd();
-#ifdef _MSC_VER
-	system("pause");
-#endif
+	//redis_cmd();
+
 	unsigned int j;
 	redisContext *c;
 	redisReply *reply;
 
 	struct timeval timeout = { 1, 500000 }; // 1.5 seconds
-	c = redisConnectWithTimeout((char*)"127.0.0.1", 6379, timeout);
+	c = redisConnectWithTimeout((char*)"192.168.64.136", 6379, timeout);
 	if (c->err) {
 		printf("Connection error: %s\n", c->errstr);
 		exit(1);
 	}
+
+	reply = (redisReply *)redisCommand(c, "AUTH 123456");
+	printf("AUTH: %s\n", reply->str);
+	freeReplyObject(reply);
 
 	/* PING server */
 	reply = (redisReply *)redisCommand(c, "PING");
@@ -60,9 +62,9 @@ int main(int argc, char *argv[])
 	freeReplyObject(reply);
 
 	/* Set a key using binary safe API */
-	reply = (redisReply *)redisCommand(c, "SET %b %b", "bar", 3, "hello", 5);
-	printf("SET (binary API): %s\n", reply->str);
-	freeReplyObject(reply);
+	//reply = (redisReply *)redisCommand(c, "SET %b %b", "bar", 3, "hello", 5);
+	//printf("SET (binary API): %s\n", reply->str);
+	//freeReplyObject(reply);
 
 	/* Try a GET and two INCR */
 	reply = (redisReply *)redisCommand(c, "GET foo");
@@ -97,6 +99,8 @@ int main(int argc, char *argv[])
 		}
 	}
 	freeReplyObject(reply);
-
+#ifdef _MSC_VER
+	system("pause");
+#endif
 	return 0;
 }
