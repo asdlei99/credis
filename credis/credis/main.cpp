@@ -10,7 +10,7 @@
 #include <win32fixes.h>
 //#pragma comment(lib,"hiredis.lib")
 //#pragma comment(lib,"Win32_Interop.lib")
-#endif
+#endif // !_MSC_VER
 #include <iostream>
 #include <string>
 #include "credis_mgr.h"

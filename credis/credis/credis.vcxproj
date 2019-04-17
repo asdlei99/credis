@@ -69,7 +69,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(W_INCLUDE)\win32_interop\include;$(W_INCLUDE)\hiredis\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(W_INCLUDE)\win32_interop\include;$(W_INCLUDE)\hiredis\include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <LibraryPath>$(W_INCLUDE)\win32_interop\lib\x64\debug;$(W_INCLUDE)\hiredis\lib\x64\debug;$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);$(NETFXKitsDir)Lib\um\x64;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)..\vsout\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>

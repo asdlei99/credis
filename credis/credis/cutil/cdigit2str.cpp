@@ -1,9 +1,9 @@
 /********************************************************************
-created:	2019-03-24
+		created:	2019-03-24
 
-author:		chensong
+		author:		chensong
 
-purpose:	字符串处理工具类
+		purpose:	字符串处理工具类
 
 *********************************************************************/
 #include "cdigit2str.h"
@@ -85,6 +85,13 @@ namespace chen
 				return 0;
 			}
 		}
+		
+	/* 	if (buffer_.avail() >= kMaxNumericSize)
+		{
+		int len = snprintf(buffer_.current(), kMaxNumericSize, "%.12g", v);
+		buffer_.add(len);
+		}
+		return *this;*/
 		return sprintf(buf, "%.2g", value);
 	}
 
