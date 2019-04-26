@@ -9,6 +9,7 @@ purpose:	redis cmd tool
 
 #include "credis_mgr.h"
 #include "clog.h"
+#include <cstring>
 
 namespace chen {
 	static const int BLOB_BUF_SIZE = 2 * 1024 * 1024;

@@ -51,4 +51,4 @@ namespace chen
 
 }// namespace chen
 
-#endif _C_DIGIT2STR_H_
+#endif // !_C_DIGIT2STR_H_

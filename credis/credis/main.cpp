@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
 	for (j = 0; j < 10; j++) {
 		char buf[64];
 
-		sprintf_s(buf, 64, "%d", j);
+		//sprintf_s(buf, 64, "%d", j);
 		reply = (redisReply *)redisCommand(c, "LPUSH mylist element-%s", buf);
 		freeReplyObject(reply);
 	}

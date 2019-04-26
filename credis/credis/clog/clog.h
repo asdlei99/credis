@@ -31,8 +31,8 @@ namespace chen {
 #define DEBUG_LOG(format, ...)		printf(format, ##__VA_ARGS__)
 
 
-#define ERROR_EX_LOG(format, ...)	ERROR_LOG("[%s][%d][ERROR]" format, FUNCTION, __LINE__, ##__VA_ARGS__)
-#define WARNING_EX_LOG(format, ...)	ERROR_LOG("[%s][%d][WARNING]" format, FUNCTION, __LINE__, ##__VA_ARGS__)
+#define ERROR_EX_LOG(format, ...)	ERROR_LOG("[%s][%u][ERROR]" format, FUNCTION, __LINE__, ##__VA_ARGS__)
+#define WARNING_EX_LOG(format, ...)	ERROR_LOG("[%s][%u][WARNING]" format, FUNCTION, __LINE__, ##__VA_ARGS__)
 
 } // chen
 
