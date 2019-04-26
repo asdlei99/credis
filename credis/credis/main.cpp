@@ -14,6 +14,7 @@
 #include <iostream>
 #include <string>
 #include "credis_mgr.h"
+#include "credis_cfg.h"
 
 void redis_cmd()
 {
@@ -36,6 +37,14 @@ int main(int argc, char *argv[])
 
 	//redis_cmd();
 
+	if (!chen::g_redis_cfg.init(argv[1]))
+	{
+		system("pause");
+		return 1;
+	}
+	printf("redis ip = %s, port = %d\n", chen::g_redis_cfg.get_string(chen::CNG_REDIS_IP).c_str(),
+		chen::g_redis_cfg.get_int32(chen::CNG_REDIS_PORT));
+	system("pause");
 	unsigned int j;
 	redisContext *c;
 	redisReply *reply;

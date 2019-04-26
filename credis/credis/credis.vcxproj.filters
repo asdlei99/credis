@@ -11,6 +11,12 @@
     <ClCompile Include="credis\credis_mgr.cpp">
       <Filter>credis</Filter>
     </ClCompile>
+    <ClCompile Include="cconfig\ccfg.cpp">
+      <Filter>cconfig</Filter>
+    </ClCompile>
+    <ClCompile Include="cserver\credis_cfg.cpp">
+      <Filter>cserver</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="cutil">
@@ -24,6 +30,12 @@
     </Filter>
     <Filter Include="clog">
       <UniqueIdentifier>{875dd1d2-9b95-479d-8962-90476d411a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cconfig">
+      <UniqueIdentifier>{19d08ee1-22fd-42ff-8794-219288f47f8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cserver">
+      <UniqueIdentifier>{f55a3431-1554-4f89-b30e-79bc80f003b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +56,12 @@
     </ClInclude>
     <ClInclude Include="clog\clog.h">
       <Filter>clog</Filter>
+    </ClInclude>
+    <ClInclude Include="cconfig\ccfg.h">
+      <Filter>cconfig</Filter>
+    </ClInclude>
+    <ClInclude Include="cserver\credis_cfg.h">
+      <Filter>cserver</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
