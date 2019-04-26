@@ -34,7 +34,7 @@ namespace chen {
 		
 
 		m_values_size = max_num;
-
+		return true;
 	}
 
 	void ccfg::destroy()
@@ -213,7 +213,7 @@ namespace chen {
 		{
 			return false;
 		}
-		int64 start_pos = 0, end_pos = line.size() - 1, pos;
+		std::string::size_type start_pos = 0, end_pos = line.size() - 1, pos;
 		if ((pos = line.find('#')) != std::string::npos)
 		{
 			if (pos == 0)
