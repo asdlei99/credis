@@ -44,6 +44,7 @@ int main(int argc, char *argv[])
 	}
 	printf("redis ip = %s, port = %d\n", chen::g_redis_cfg.get_string(chen::CNG_REDIS_IP).c_str(),
 		chen::g_redis_cfg.get_int32(chen::CNG_REDIS_PORT));
+	chen::g_redis_cfg.destroy();
 	system("pause");
 	unsigned int j;
 	redisContext *c;
