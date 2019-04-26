@@ -10,9 +10,32 @@
 #ifndef _C_LOG_H_
 #define _C_LOG_H_
 #include "cnet_type.h"
+#include "cnoncopyable.h"
 #include <cstdio>
 #include <cstdlib>
+#include <string>
 namespace chen {
+
+
+	class clog : private cnoncopyable
+	{
+	public:
+		explicit clog();
+		virtual ~clog();
+	public:
+	   static bool init(const std::string& path, const std::string & name);
+	   static void destroy();
+	public:
+	};
+
+
+
+
+
+
+
+
+
 #if defined(_MSC_VER)
 #define FUNCTION __FUNCTION__
 
