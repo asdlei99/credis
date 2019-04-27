@@ -151,6 +151,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cconfig\cconfig.cpp" />
+    <ClCompile Include="clog\clog.cpp" />
     <ClCompile Include="cnet\cnet_type.cpp" />
     <ClCompile Include="credis\credis_mgr.cpp" />
     <ClCompile Include="cserver\credis_cfg.cpp" />

@@ -17,6 +17,9 @@
     <ClCompile Include="cconfig\cconfig.cpp">
       <Filter>cconfig</Filter>
     </ClCompile>
+    <ClCompile Include="clog\clog.cpp">
+      <Filter>clog</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="cutil">

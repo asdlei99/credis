@@ -46,6 +46,13 @@ namespace chen {
 
 	void cconfig::destroy()
 	{
+		if (m_configs)
+		{
+			delete[] m_configs;
+			m_configs = NULL;
+		}
+
+		m_values_size = 0;
 	}
 
 	void cconfig::set_string(int64 key_num,const std::string key, std::string value)
