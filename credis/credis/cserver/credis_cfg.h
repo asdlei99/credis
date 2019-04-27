@@ -1,6 +1,13 @@
+/***********************************************************************************************
+			created: 		2019-04-27
+
+			author:			chensong
+
+			purpose:		redis_cfg
+************************************************************************************************/
 #ifndef _C_REDIS_CFG_H_
 #define _C_REDIS_CFG_H_
-#include "ccfg.h"
+#include "cconfig.h"
 #include "csingleton.h"
 namespace chen {
 	enum ECNGIndex
@@ -9,7 +16,7 @@ namespace chen {
 		CNG_REDIS_PORT,
 		CNG_Max,
 	};
-	class credis_cfg : public ccfg
+	class credis_cfg : public cconfig
 	{
 	public:
 	    explicit	credis_cfg();

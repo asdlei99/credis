@@ -1,3 +1,10 @@
+/***********************************************************************************************
+				created: 		2019-04-27
+
+				author:			chensong
+
+				purpose:		redis_cfg
+************************************************************************************************/
 #include "credis_cfg.h"
 
 namespace chen {
@@ -13,21 +20,21 @@ namespace chen {
 	}
 	bool credis_cfg::init(const char * file_name)
 	{
-		if (!ccfg::init(CNG_Max, file_name))
+		if (!cconfig::init(CNG_Max, file_name))
 		{
 			return false;
 		}
-		// Ä¬ÈÏÖµ
+		// é»˜è®¤å€¼
 		set_string(CNG_REDIS_IP, "redis_ip", "127.0.0.1");
 		set_int32(CNG_REDIS_PORT, "redis_prot", 6379);
 
-		//ÅäÖÃ±íµÄÖµ
-		cfg_data();
+		//é…ç½®è¡¨çš„å€¼
+		load_cfg_file();
 
 		return true;
 	}
 	void credis_cfg::destroy()
 	{
-		ccfg::destroy();
+		cconfig::destroy();
 	}
 }//namespace chen 

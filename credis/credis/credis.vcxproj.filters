@@ -11,11 +11,11 @@
     <ClCompile Include="credis\credis_mgr.cpp">
       <Filter>credis</Filter>
     </ClCompile>
-    <ClCompile Include="cconfig\ccfg.cpp">
-      <Filter>cconfig</Filter>
-    </ClCompile>
     <ClCompile Include="cserver\credis_cfg.cpp">
       <Filter>cserver</Filter>
+    </ClCompile>
+    <ClCompile Include="cconfig\cconfig.cpp">
+      <Filter>cconfig</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -57,11 +57,11 @@
     <ClInclude Include="clog\clog.h">
       <Filter>clog</Filter>
     </ClInclude>
-    <ClInclude Include="cconfig\ccfg.h">
-      <Filter>cconfig</Filter>
-    </ClInclude>
     <ClInclude Include="cserver\credis_cfg.h">
       <Filter>cserver</Filter>
+    </ClInclude>
+    <ClInclude Include="cconfig\cconfig.h">
+      <Filter>cconfig</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
