@@ -163,7 +163,7 @@ namespace chen
 
 #if defined(_MSC_VER)
 		if (0 == ::strnicmp("ok", reply->str, 3))
-#elif defined(__GNUC__)
+#elif defined(__GNUC__) 
 		if (0 == ::strncasecmp("ok", reply->str, 3))
 #else
 #pragma error "unknow platform!!!"

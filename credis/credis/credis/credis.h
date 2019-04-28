@@ -13,7 +13,7 @@
 #include <string>
 #include <vector>
 //#include "base/ErrorCode.h"
-
+#include "csingleton.h"
 /* redis 接口注意事项
  * 1、使用get接口时，当返回结果为0（长度）时，该key有可能不存在，也有可能key对应的值为空，若想确定是否为空，需调用对应的 has接口，
       除非你的业务能保证不存在非空值的value.
@@ -100,8 +100,11 @@ namespace chen
 		unsigned int m_nTimeout;
 	};
 
-} // chen
 
+	
+
+} // chen
+#define  g_redis_singleton    chen::csingleton<chen::CRedis>::get_instance()
 #endif // CREDIS_H
 
 

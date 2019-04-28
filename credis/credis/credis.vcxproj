@@ -155,10 +155,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="cconfig\cconfig.cpp" />
+    <ClCompile Include="clog\casync_log.cpp" />
     <ClCompile Include="clog\clog.cpp" />
     <ClCompile Include="cnet\cnet_type.cpp" />
     <ClCompile Include="credis\credis.cpp" />
     <ClCompile Include="credis\credis_mgr.cpp" />
+    <ClCompile Include="credis\credis_request.cpp" />
     <ClCompile Include="cserver\credis_cfg.cpp" />
     <ClCompile Include="ctime\ctime_api.cpp" />
     <ClCompile Include="cutil\cdigit2str.cpp" />
@@ -166,10 +168,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="cconfig\cconfig.h" />
+    <ClInclude Include="clog\casync_log.h" />
     <ClInclude Include="clog\clog.h" />
     <ClInclude Include="cnet\cnet_type.h" />
     <ClInclude Include="credis\credis.h" />
     <ClInclude Include="credis\credis_mgr.h" />
+    <ClInclude Include="credis\credis_request.h" />
     <ClInclude Include="cserver\credis_cfg.h" />
     <ClInclude Include="ctime\ctime_api.h" />
     <ClInclude Include="ctime\ctime_const.h" />
