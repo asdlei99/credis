@@ -35,6 +35,11 @@ file(GLOB ALL_CXX_SRCS
 					./credis/*.cpp
 					)
 
+SET(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/linux/lib )
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/linux)
+
+
+
 add_executable(${PROJECT_NAME} ${ALL_CXX_SRCS})
 
 set(ALL_LIB  	pthread
