@@ -20,6 +20,9 @@
     <ClCompile Include="clog\clog.cpp">
       <Filter>clog</Filter>
     </ClCompile>
+    <ClCompile Include="ctime\ctime_api.cpp">
+      <Filter>ctime</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="cutil">
@@ -39,6 +42,9 @@
     </Filter>
     <Filter Include="cserver">
       <UniqueIdentifier>{f55a3431-1554-4f89-b30e-79bc80f003b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ctime">
+      <UniqueIdentifier>{29f9ecd5-cc83-4d2f-bae6-d34d2be638ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +71,12 @@
     </ClInclude>
     <ClInclude Include="cconfig\cconfig.h">
       <Filter>cconfig</Filter>
+    </ClInclude>
+    <ClInclude Include="ctime\ctime_api.h">
+      <Filter>ctime</Filter>
+    </ClInclude>
+    <ClInclude Include="ctime\ctime_const.h">
+      <Filter>ctime</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

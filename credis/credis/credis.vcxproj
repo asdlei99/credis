@@ -155,6 +155,7 @@
     <ClCompile Include="cnet\cnet_type.cpp" />
     <ClCompile Include="credis\credis_mgr.cpp" />
     <ClCompile Include="cserver\credis_cfg.cpp" />
+    <ClCompile Include="ctime\ctime_api.cpp" />
     <ClCompile Include="cutil\cdigit2str.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -164,6 +165,8 @@
     <ClInclude Include="cnet\cnet_type.h" />
     <ClInclude Include="credis\credis_mgr.h" />
     <ClInclude Include="cserver\credis_cfg.h" />
+    <ClInclude Include="ctime\ctime_api.h" />
+    <ClInclude Include="ctime\ctime_const.h" />
     <ClInclude Include="cutil\cdigit2str.h" />
     <ClInclude Include="cutil\cnoncopyable.h" />
     <ClInclude Include="cutil\csingleton.h" />
