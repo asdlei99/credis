@@ -99,6 +99,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>./cutil;./cnet;./clog;./credis;./cconfig;./cserver;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>hiredis.lib;Win32_Interop.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -111,6 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>./cutil;./cnet;./clog;./credis;./cconfig;./cserver;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalDependencies>hiredis.lib;Win32_Interop.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -125,6 +127,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>./cutil;./cnet;./clog;./credis;./cconfig;./cserver;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -141,6 +144,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>./cutil;./cnet;./clog;./credis;./cconfig;./cserver;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>_CRT_NONSTDC_NO_WARNINGS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -153,6 +157,7 @@
     <ClCompile Include="cconfig\cconfig.cpp" />
     <ClCompile Include="clog\clog.cpp" />
     <ClCompile Include="cnet\cnet_type.cpp" />
+    <ClCompile Include="credis\credis.cpp" />
     <ClCompile Include="credis\credis_mgr.cpp" />
     <ClCompile Include="cserver\credis_cfg.cpp" />
     <ClCompile Include="ctime\ctime_api.cpp" />
@@ -163,6 +168,7 @@
     <ClInclude Include="cconfig\cconfig.h" />
     <ClInclude Include="clog\clog.h" />
     <ClInclude Include="cnet\cnet_type.h" />
+    <ClInclude Include="credis\credis.h" />
     <ClInclude Include="credis\credis_mgr.h" />
     <ClInclude Include="cserver\credis_cfg.h" />
     <ClInclude Include="ctime\ctime_api.h" />

@@ -15,6 +15,7 @@
 #include <string>
 #include "credis_mgr.h"
 #include "credis_cfg.h"
+#include "credis.h"
 
 void redis_cmd()
 {

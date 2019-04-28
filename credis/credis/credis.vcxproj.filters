@@ -23,6 +23,9 @@
     <ClCompile Include="ctime\ctime_api.cpp">
       <Filter>ctime</Filter>
     </ClCompile>
+    <ClCompile Include="credis\credis.cpp">
+      <Filter>credis</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="cutil">
@@ -77,6 +80,9 @@
     </ClInclude>
     <ClInclude Include="ctime\ctime_const.h">
       <Filter>ctime</Filter>
+    </ClInclude>
+    <ClInclude Include="credis\credis.h">
+      <Filter>credis</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
