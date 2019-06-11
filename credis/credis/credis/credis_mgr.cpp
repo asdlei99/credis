@@ -3,7 +3,7 @@
 
 				author:		chensong
 
-				purpose:	redis cmd tool
+				purpose:	redis_mgr
 
 *********************************************************************/
 
@@ -14,7 +14,10 @@
 namespace chen {
 	static const int BLOB_BUF_SIZE = 2 * 1024 * 1024;
 
-	credis_mgr::credis_mgr() : m_buf(NULL)
+	credis_mgr::credis_mgr()
+		: m_redis_master_ptr(NULL)
+		, m_redis_slave_ptr(NULL)
+		, m_buf(NULL)
 		, m_buf_size(0)
 		, m_pos(0)
 		, m_error(false)
@@ -28,6 +31,19 @@ namespace chen {
 
 	bool credis_mgr::init()
 	{
+		
+		m_redis_master_ptr = credis_master::construct();
+		if (!m_redis_master_ptr)
+		{
+			ERROR_LOG(" redis master construct ");
+			return false;
+		}
+		m_redis_slave_ptr = credis_slave::construct();
+		if (!m_redis_slave_ptr)
+		{
+			ERROR_LOG(" redis slave construct ");
+			return false;
+		}
 		m_buf = new char[BLOB_BUF_SIZE];
 		if (!m_buf)
 		{
@@ -35,14 +51,24 @@ namespace chen {
 			return false;
 		}
 		memset(m_buf, 0, BLOB_BUF_SIZE);
-		
-		m_buf_size = BLOB_BUF_SIZE;
 
+		m_buf_size = BLOB_BUF_SIZE;
 		return true;
 	}
 
 	void credis_mgr::destroy()
 	{
+		if (m_redis_master_ptr)
+		{
+			credis_master::destroy(m_redis_master_ptr);
+			m_redis_master_ptr = NULL;
+		}
+
+		if (m_redis_slave_ptr)
+		{
+			credis_slave::destroy(m_redis_slave_ptr);
+			m_redis_slave_ptr = NULL;
+		}
 		if (m_buf)
 		{
 			delete[] m_buf;

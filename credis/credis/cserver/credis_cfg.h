@@ -14,6 +14,7 @@ namespace chen {
 	{
 		CNG_REDIS_IP = 0,
 		CNG_REDIS_PORT,
+		CNG_REDIS_PASSWORD,
 		CNG_Max,
 	};
 	class credis_cfg : public cconfig

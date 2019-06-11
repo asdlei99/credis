@@ -26,7 +26,8 @@ namespace chen {
 		}
 		// 默认值
 		set_string(CNG_REDIS_IP, "redis_ip", "127.0.0.1");
-		set_int32(CNG_REDIS_PORT, "redis_prot", 6379);
+		set_int32(CNG_REDIS_PORT, "redis_port", 6379);
+		set_string(CNG_REDIS_PASSWORD, "redis_password", "cpglive");
 
 		//配置表的值
 		load_cfg_file();

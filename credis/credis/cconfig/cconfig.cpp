@@ -74,7 +74,7 @@ namespace chen {
 			ERROR_EX_LOG("set_int32 index = %ld, num = %ld, key = %s, value = %d\n", m_values_size, index, key.c_str(), value);
 			return;
 		}
-		m_configs[index].init(key, EDataTypeString);
+		m_configs[index].init(key, EDataTypeint);
 		m_configs[index].m_int32 = index;
 	}
 
@@ -85,7 +85,7 @@ namespace chen {
 			ERROR_EX_LOG("set_uint32 index = %ld, num = %ld, key = %s, value = %ld\n", m_values_size, index, key.c_str(), value);
 			return;
 		}
-		m_configs[index].init(key, EDataTypeString);
+		m_configs[index].init(key, EDataTypeuint32);
 		m_configs[index].m_uint32 = value;
 	}
 
@@ -107,7 +107,7 @@ namespace chen {
 			ERROR_EX_LOG("set_int32 max_num = %ld, num = %ld, key = %s, value = %d\n", m_values_size, index, key, value);
 			return;
 		}
-		m_configs[index].init(key, EDataTypeString);
+		m_configs[index].init(key, EDataTypeint);
 		m_configs[index].m_int32 = value;
 	}
 
@@ -118,7 +118,7 @@ namespace chen {
 			ERROR_EX_LOG("set_uint32 index = %ld, num = %ld, key = %s, value = %ld\n", m_values_size, index, key, value);
 			return;
 		}
-		m_configs[index].init(key, EDataTypeString);
+		m_configs[index].init(key, EDataTypeuint32);
 		m_configs[index].m_uint32 = value;
 	}
 

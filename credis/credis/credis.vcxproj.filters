@@ -29,8 +29,11 @@
     <ClCompile Include="credis\credis_request.cpp">
       <Filter>credis</Filter>
     </ClCompile>
-    <ClCompile Include="clog\casync_log.cpp">
-      <Filter>clog</Filter>
+    <ClCompile Include="credis\credis_master.cpp">
+      <Filter>credis</Filter>
+    </ClCompile>
+    <ClCompile Include="credis\credis_slave.cpp">
+      <Filter>credis</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -93,8 +96,11 @@
     <ClInclude Include="credis\credis_request.h">
       <Filter>credis</Filter>
     </ClInclude>
-    <ClInclude Include="clog\casync_log.h">
-      <Filter>clog</Filter>
+    <ClInclude Include="credis\credis_master.h">
+      <Filter>credis</Filter>
+    </ClInclude>
+    <ClInclude Include="credis\credis_slave.h">
+      <Filter>credis</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

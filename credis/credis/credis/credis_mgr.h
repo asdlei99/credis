@@ -3,7 +3,7 @@
 
 				author:		chensong
 
-				purpose:	redis cmd tool
+				purpose:	redis_mgr
 
 *********************************************************************/
 #ifndef _C_REDIS_MGR_H
@@ -12,6 +12,8 @@
 #include "cnet_type.h"
 #include "cdigit2str.h"
 #include <string>
+#include "credis_master.h"
+#include "credis_slave.h"
 
 namespace chen
 {
@@ -78,6 +80,8 @@ namespace chen
 		credis_mgr& operator<<(const std::string& value);
 	
 	private:
+		credis_master*	m_redis_master_ptr; //master 
+		credis_slave*	m_redis_slave_ptr; // slave
 		char*			m_buf;
 		uint32			m_buf_size;
 		uint32			m_pos;
