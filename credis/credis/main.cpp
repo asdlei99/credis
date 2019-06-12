@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	
-	std::string cmd_redis = "hmset iiiiiiiiiiiiiiiiiiiiiiiiiiiii:9725 playername huanao006 playertoken b224ff7fe1ffe2a6b714b2257d746b0caa1fba7b playerheardheat 1558275879 playerclientversion 10 playerlanguage 0 playergsid gs device_id E4417401-17B8-4BE6-ABAC-A7C06D739552";
+	std::string cmd_redis = "hmset yyyy:9725 playername huanao006 playertoken b224ff7fe1ffe2a6b714b2257d746b0caa1fba7b playerheardheat 1558275879 playerclientversion 10 playerlanguage 0 playergsid gs device_id E4417401-17B8-4BE6-ABAC-A7C06D739552";
 
 
 	if (!chen::g_redis_mgr.write_master_data(cmd_redis))
@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 		system("pause");
 		return -1;
 	}
-
+	chen::g_redis_mgr.destroy();
 //	if (!g_redis_singleton.connectSvr(chen::g_redis_cfg.get_string(chen::CNG_REDIS_IP).c_str(), chen::g_redis_cfg.get_int32(chen::CNG_REDIS_PORT)))
 //	{
 //#ifdef _MSC_VER
