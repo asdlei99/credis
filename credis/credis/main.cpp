@@ -16,6 +16,7 @@
 #include "credis_mgr.h"
 #include "credis_cfg.h"
 #include "credis.h"
+#include "csingleton.h"
 
 void redis_cmd()
 {
@@ -48,121 +49,138 @@ int main(int argc, char *argv[])
 	}
 	printf("redis ip = %s, port = %d\n", chen::g_redis_cfg.get_string(chen::CNG_REDIS_IP).c_str(),
 		chen::g_redis_cfg.get_int32(chen::CNG_REDIS_PORT));
-	
-	if (!g_redis_singleton.connectSvr(chen::g_redis_cfg.get_string(chen::CNG_REDIS_IP).c_str(), chen::g_redis_cfg.get_int32(chen::CNG_REDIS_PORT)))
+	//g_redis_mgrusing namespace chen;
+	//g_redis_mgrusing namespace chen;
+	if (!chen::g_redis_mgr.init())
 	{
-#ifdef _MSC_VER
+		//ERROR_LOG("redis init ");
 		system("pause");
-#endif // !_MSC_VER
 		return -1;
 	}
-	redisContext * redisInstance_ = NULL;
-	// redis pass
-	if (chen::g_redis_cfg.get_string(chen::CNG_REDIS_PASSWORD).length() > 1)
+	
+	std::string cmd_redis = "hmset iiiiiiiiiiiiiiiiiiiiiiiiiiiii:9725 playername huanao006 playertoken b224ff7fe1ffe2a6b714b2257d746b0caa1fba7b playerheardheat 1558275879 playerclientversion 10 playerlanguage 0 playergsid gs device_id E4417401-17B8-4BE6-ABAC-A7C06D739552";
+
+
+	if (!chen::g_redis_mgr.write_master_data(cmd_redis))
 	{
-		redisReply* reply = static_cast<redisReply*>( g_redis_singleton.command("SENTINEL get-master-addr-by-name %s", "mymaster"));
-		
-		if (reply)
-		{
-			if (reply->type == REDIS_REPLY_ARRAY)
-			{
-				int port = 0;
-				std::string strAddrIP;
-				redisReply* ipElement = reply->element[0];
-				if (ipElement && ipElement->type == REDIS_REPLY_STRING)
-				{
-					//strAddrIP = ipElement->str;
-					strAddrIP = "192.168.1.33";
-				}
-
-				redisReply* portElement = reply->element[1];
-				if (portElement && portElement->type == REDIS_REPLY_STRING)
-				{
-					port = std::atoi(portElement->str);
-				}
-
-				redisInstance_ = redisConnect(strAddrIP.c_str(), port);
-				if (NULL == redisInstance_ || redisInstance_->err)
-				{
-					// redis为NULL与redis->err是两种不同的错误，
-					// 若redis->err为true，可使用redis->errstr查看错误信息
-					printf("Run Redis: %d %s\n", redisInstance_->err, redisInstance_->errstr);
-					
-					redisFree(redisInstance_);
-				}
-				else
-				{
-					
-					redisReply* reply = (redisReply*)redisCommand(redisInstance_, "AUTH %s", chen::g_redis_cfg.get_string(chen::CNG_REDIS_PASSWORD).c_str());
-					if (reply->type == REDIS_REPLY_ERROR) 
-					{
-						/* Authentication failed */
-						printf("Run Redis Error: %s\n", reply->str);
-						
-					}
-					else
-					{
-					//	bSuccess = true;
-					}//endi
-				}//endi
-			}
-			else
-			{
-				if (reply->type == REDIS_REPLY_ERROR)
-				{
-					printf( "Run Redis  Authentication failed: %s\n" , reply->str);
-				}
-				printf("Run Redis Error: %d", reply->type);
-			}//endi
-			freeReplyObject(reply);
-		}
-		else
-		{
-			//printf("Run Redis Error: %d %s\n", sentinelInstance_->err, sentinelInstance_->errstr);
-			
-		}//endi
-		
-		
-		
-		std::string cmd_redis = "hmset wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww:9725 playername huanao006 playertoken b224ff7fe1ffe2a6b714b2257d746b0caa1fba7b playerheardheat 1558275879 playerclientversion 10 playerlanguage 0 playergsid gs device_id E4417401-17B8-4BE6-ABAC-A7C06D739552";
-
-
-		reply = (redisReply*)redisCommand(redisInstance_, cmd_redis.c_str());
-		if (reply->type == REDIS_REPLY_ERROR)
-		{
-			/* Authentication failed */
-			printf("Run Redis Error: %s\n", reply->str);
-			printf(" error \n");
-			//	//system("pause");
-		}
-		else
-		{
-			printf(" ok \n");
-			//	//system("pause");
-			//	bSuccess = true;
-		}//endi
-		//if (g_redis_singleton.command(cmd_redis.c_str()))
-		//{
-		//	printf(" error \n");
-		//	//system("pause");
-
-		//}
-		
-		
-		
-		
-		
-		
-		
-		
-		/*if (!g_redis_singleton.command("AUTH %s", chen::g_redis_cfg.get_string(chen::CNG_REDIS_PASSWORD).c_str()))
-		{
-			system("pause");
-			return -1;
-		}*/
+		system("pause");
+		return -1;
 	}
 
-	//g_redis_singleton.setKey("chensong", 8, "chenli", 7);
+//	if (!g_redis_singleton.connectSvr(chen::g_redis_cfg.get_string(chen::CNG_REDIS_IP).c_str(), chen::g_redis_cfg.get_int32(chen::CNG_REDIS_PORT)))
+//	{
+//#ifdef _MSC_VER
+//		system("pause");
+//#endif // !_MSC_VER
+//		return -1;
+//	}
+//	redisContext * redisInstance_ = NULL;
+//	// redis pass
+//	if (chen::g_redis_cfg.get_string(chen::CNG_REDIS_PASSWORD).length() > 1)
+//	{
+//		redisReply* reply = static_cast<redisReply*>( g_redis_singleton.command("SENTINEL get-master-addr-by-name %s", "mymaster"));
+//		
+//		if (reply)
+//		{
+//			if (reply->type == REDIS_REPLY_ARRAY)
+//			{
+//				int port = 0;
+//				std::string strAddrIP;
+//				redisReply* ipElement = reply->element[0];
+//				if (ipElement && ipElement->type == REDIS_REPLY_STRING)
+//				{
+//					strAddrIP = ipElement->str;
+//					//strAddrIP = "192.168.1.33";
+//				}
+//
+//				redisReply* portElement = reply->element[1];
+//				if (portElement && portElement->type == REDIS_REPLY_STRING)
+//				{
+//					port = std::atoi(portElement->str);
+//				}
+//
+//				redisInstance_ = redisConnect(strAddrIP.c_str(), port);
+//				if (NULL == redisInstance_ || redisInstance_->err)
+//				{
+//					// redis为NULL与redis->err是两种不同的错误，
+//					// 若redis->err为true，可使用redis->errstr查看错误信息
+//					printf("Run Redis: %d %s\n", redisInstance_->err, redisInstance_->errstr);
+//					
+//					redisFree(redisInstance_);
+//				}
+//				else
+//				{
+//					
+//					redisReply* reply = (redisReply*)redisCommand(redisInstance_, "AUTH %s", chen::g_redis_cfg.get_string(chen::CNG_REDIS_PASSWORD).c_str());
+//					if (reply->type == REDIS_REPLY_ERROR) 
+//					{
+//						/* Authentication failed */
+//						printf("Run Redis Error: %s\n", reply->str);
+//						
+//					}
+//					else
+//					{
+//					//	bSuccess = true;
+//					}//endi
+//				}//endi
+//			}
+//			else
+//			{
+//				if (reply->type == REDIS_REPLY_ERROR)
+//				{
+//					printf( "Run Redis  Authentication failed: %s\n" , reply->str);
+//				}
+//				printf("Run Redis Error: %d", reply->type);
+//			}//endi
+//			freeReplyObject(reply);
+//		}
+//		else
+//		{
+//			//printf("Run Redis Error: %d %s\n", sentinelInstance_->err, sentinelInstance_->errstr);
+//			
+//		}//endi
+//		
+//		
+//		
+//		std::string cmd_redis = "hmset pppppppppppppppppppppppp:9725 playername huanao006 playertoken b224ff7fe1ffe2a6b714b2257d746b0caa1fba7b playerheardheat 1558275879 playerclientversion 10 playerlanguage 0 playergsid gs device_id E4417401-17B8-4BE6-ABAC-A7C06D739552";
+//
+//
+//		reply = (redisReply*)redisCommand(redisInstance_, cmd_redis.c_str());
+//		if (reply->type == REDIS_REPLY_ERROR)
+//		{
+//			/* Authentication failed */
+//			printf("Run Redis Error: %s\n", reply->str);
+//			printf(" error \n");
+//			//	//system("pause");
+//		}
+//		else
+//		{
+//			printf(" ok \n");
+//			//	//system("pause");
+//			//	bSuccess = true;
+//		}//endi
+//		//if (g_redis_singleton.command(cmd_redis.c_str()))
+//		//{
+//		//	printf(" error \n");
+//		//	//system("pause");
+//
+//		//}
+//		
+//		
+//		
+//		
+//		
+//		
+//		
+//		
+//		/*if (!g_redis_singleton.command("AUTH %s", chen::g_redis_cfg.get_string(chen::CNG_REDIS_PASSWORD).c_str()))
+//		{
+//			system("pause");
+//			return -1;
+//		}*/
+//	}
+//
+//	//g_redis_singleton.setKey("chensong", 8, "chenli", 7);
 	//char buf[1024];
 	//g_redis_singleton.getKey("chensong", 8, buf, 1024);
 	//char cmd_redis[256]  = "hmset playerLoginSessionProperty:3163 playername 123456 playertoken 587fc1d48933fb84d4ef3445d16afd496d731380 playerheardheat 1558289942 playerclientversion 10 playerlanguage 0 playergsid gs device_id 7a30fcec%2D7ec0%2D4ae6%2D9a8a%2Ddc32299fb977";

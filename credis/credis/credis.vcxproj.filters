@@ -35,6 +35,9 @@
     <ClCompile Include="credis\credis_slave.cpp">
       <Filter>credis</Filter>
     </ClCompile>
+    <ClCompile Include="credis\credis_sentinel.cpp">
+      <Filter>credis</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="cutil">
@@ -100,6 +103,9 @@
       <Filter>credis</Filter>
     </ClInclude>
     <ClInclude Include="credis\credis_slave.h">
+      <Filter>credis</Filter>
+    </ClInclude>
+    <ClInclude Include="credis\credis_sentinel.h">
       <Filter>credis</Filter>
     </ClInclude>
   </ItemGroup>

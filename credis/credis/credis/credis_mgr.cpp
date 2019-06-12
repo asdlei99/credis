@@ -10,12 +10,15 @@
 #include "credis_mgr.h"
 #include "clog.h"
 #include <cstring>
+#include "credis_cfg.h"
 
 namespace chen {
+	credis_mgr	g_redis_mgr;
 	static const int BLOB_BUF_SIZE = 2 * 1024 * 1024;
 
 	credis_mgr::credis_mgr()
-		: m_redis_master_ptr(NULL)
+		: m_redis_sentinel_ptr(NULL)
+		, m_redis_master_ptr(NULL)
 		, m_redis_slave_ptr(NULL)
 		, m_buf(NULL)
 		, m_buf_size(0)
@@ -31,11 +34,28 @@ namespace chen {
 
 	bool credis_mgr::init()
 	{
-		
+		m_redis_sentinel_ptr = credis_sentinel::construct();
+		if (!m_redis_sentinel_ptr)
+		{
+			ERROR_LOG(" redis sentinel construct ");
+			return false;
+		}
+		if (!m_redis_sentinel_ptr->init(g_redis_cfg.get_string(CNG_REDIS_IP).c_str(), g_redis_cfg.get_int32(CNG_REDIS_PORT)))
+		{
+			ERROR_LOG("redis sentinel init error");
+			return false;
+		}
 		m_redis_master_ptr = credis_master::construct();
 		if (!m_redis_master_ptr)
 		{
 			ERROR_LOG(" redis master construct ");
+			return false;
+		}
+
+
+		if (!m_redis_master_ptr->init(m_redis_sentinel_ptr->get_master_ip().c_str(), m_redis_sentinel_ptr->get_master_port()))
+		{
+			ERROR_LOG(" redis master init error ");
 			return false;
 		}
 		m_redis_slave_ptr = credis_slave::construct();
@@ -58,16 +78,23 @@ namespace chen {
 
 	void credis_mgr::destroy()
 	{
+		if (m_redis_slave_ptr)
+		{
+			m_redis_slave_ptr->destroy();
+			credis_slave::destroy(m_redis_slave_ptr);
+			m_redis_slave_ptr = NULL;
+		}
 		if (m_redis_master_ptr)
 		{
+			m_redis_master_ptr->destroy();
 			credis_master::destroy(m_redis_master_ptr);
 			m_redis_master_ptr = NULL;
 		}
-
-		if (m_redis_slave_ptr)
+		if (m_redis_sentinel_ptr)
 		{
-			credis_slave::destroy(m_redis_slave_ptr);
-			m_redis_slave_ptr = NULL;
+			m_redis_sentinel_ptr->destroy();
+			credis_sentinel::destroy(m_redis_sentinel_ptr);
+			m_redis_sentinel_ptr = NULL;
 		}
 		if (m_buf)
 		{
@@ -125,6 +152,19 @@ namespace chen {
 			return;
 		}
 		m_error = true;
+	}
+
+	bool credis_mgr::write_master_data(const std::string & data)
+	{
+		if (!m_redis_master_ptr)
+		{
+			return false;
+		}
+		if (!m_redis_master_ptr->hmsethash(data))
+		{
+			return false;
+		}
+		return true;
 	}
 
 	credis_mgr & credis_mgr::operator<<(char value)

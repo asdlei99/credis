@@ -12,9 +12,10 @@
 #include "cnet_type.h"
 #include "cdigit2str.h"
 #include <string>
+#include "credis_sentinel.h"
 #include "credis_master.h"
 #include "credis_slave.h"
-
+#include "csingleton.h"
 namespace chen
 {
 	class credis_mgr :public cnoncopyable
@@ -46,6 +47,9 @@ namespace chen
 
 		void back(uint32 len);
 
+	public:
+		// write master 
+		bool  write_master_data(const std::string & data);
 	public:
 		credis_mgr& operator<<(char value);
 
@@ -80,13 +84,17 @@ namespace chen
 		credis_mgr& operator<<(const std::string& value);
 	
 	private:
-		credis_master*	m_redis_master_ptr; //master 
-		credis_slave*	m_redis_slave_ptr; // slave
-		char*			m_buf;
-		uint32			m_buf_size;
-		uint32			m_pos;
-		bool			m_error;
+		credis_sentinel*			m_redis_sentinel_ptr;
+		credis_master*				m_redis_master_ptr; //master 
+		credis_slave*				m_redis_slave_ptr; // slave
+		char*						m_buf;
+		uint32						m_buf_size;
+		uint32						m_pos;
+		bool						m_error;
 	};
-}
+	extern credis_mgr	g_redis_mgr;
+//#define   cw_redis_mgr                     csingleton<credis_mgr>::get_instance()
+} // !namespace chen
+
 
 #endif // _C_REDIS_MGR_H
