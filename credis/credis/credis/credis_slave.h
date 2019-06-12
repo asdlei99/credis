@@ -22,6 +22,7 @@ namespace chen {
 	public:
 		bool init();
 		void destroy();
+	
 	private:
 	};
 } // !namespace chen

@@ -63,12 +63,7 @@ namespace chen {
 			ERROR_LOG("get redis master info error");
 			return false;
 		}
-
-		if (!_get_redis_slave_info())
-		{
-			ERROR_LOG("get redis slave info error");
-			return false;
-		}
+		
 		return true;
 	}
 	void credis_sentinel::destroy()

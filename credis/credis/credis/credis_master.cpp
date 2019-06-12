@@ -21,9 +21,7 @@ namespace chen {
 		delete master_ptr;
 	}
 	credis_master::credis_master()
-		: m_ip("")
-		, m_port(0)
-		, m_master_context(NULL)
+		:	m_master_context(NULL)
 	{
 	}
 	credis_master::~credis_master()
@@ -31,8 +29,10 @@ namespace chen {
 	}
 	bool credis_master::init(const char * ip, uint16 port)
 	{
-		m_ip = ip;
-		m_port = port;
+		credis_info info;
+		info.m_ip = ip;
+		info.m_port = port;
+		m_redis_info.emplace_back(info);
 		m_master_context = redisConnect(ip, port);
 		if (NULL == m_master_context || m_master_context->err)
 		{
@@ -52,6 +52,13 @@ namespace chen {
 				ERROR_LOG("Run Redis Authentication failed Error: %s", reply->str);
 				return false;
 			}
+		}
+
+
+		if (!_get_redis_slave_info())
+		{
+			ERROR_LOG("get redis salve info error");
+			return false;
 		}
 		return true;
 	}
@@ -101,6 +108,10 @@ namespace chen {
 		}*/
 
 		return reply;
+	}
+	bool credis_master::_get_redis_slave_info()
+	{
+		return true;
 	}
 } // namespace chen
 

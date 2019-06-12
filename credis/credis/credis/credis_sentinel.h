@@ -41,10 +41,9 @@ namespace chen {
 		const uint16 & get_master_port() const { return m_redis_info[1].m_port; }
 	private:
 		bool _get_redis_master_info();
-		bool _get_redis_slave_info();
 		void* _command(const char *format, ...);
 	private:
-		std::vector<credis_info>		m_redis_info;   // 0 : sentinel 1 : master 2 : slave
+		std::vector<credis_info>		m_redis_info;   // 0 : sentinel 1 : master 
 		redisContext *					m_sentinel_context;
 	};
 } // !namespace chen

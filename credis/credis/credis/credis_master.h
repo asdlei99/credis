@@ -14,6 +14,16 @@ purpose:	redis master
 namespace chen {
 	class credis_master : private cnoncopyable
 	{
+	private:
+		typedef struct credis_info
+		{
+			std::string			m_ip;
+			uint16				m_port;
+			credis_info()
+				:m_ip("")
+				, m_port(0)
+			{}
+		};
 	public:
 		static credis_master * construct();
 		static void destroy(credis_master * master_ptr);
@@ -28,8 +38,9 @@ namespace chen {
 	private:
 		void* _command(const char *format, ...);
 	private:
-		std::string						m_ip;
-		uint16							m_port;
+		bool	_get_redis_slave_info();
+	private:
+		std::vector<credis_info>		m_redis_info;
 		redisContext *					m_master_context;
 	};
 
